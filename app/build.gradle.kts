@@ -16,8 +16,8 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        // API anahtarını buraya girin ya da local.properties'e ekleyin
-        buildConfigField("String", "WEATHER_API_KEY", "\"${project.findProperty("WEATHER_API_KEY") ?: ""}\"")
+        // Hard-coded API key — do not expose in public repositories
+        buildConfigField("String", "WEATHER_API_KEY", "\"f131551e75ad8e6432e7b42869dafdf0\"")
         buildConfigField("String", "BASE_URL", "\"https://api.openweathermap.org/data/2.5/\"")
     }
 
