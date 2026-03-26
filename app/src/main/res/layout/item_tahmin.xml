@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="120dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <!-- Zaman (örn: "Sal 15:00") -->
+        <TextView
+            android:id="@+id/tvTahminZaman"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/metin_ikincil"
+            android:textSize="12sp"
+            tools:text="Sal 15:00" />
+
+        <!-- Hava durumu ikonu -->
+        <ImageView
+            android:id="@+id/ivTahminIkon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginVertical="4dp"
+            android:contentDescription="Hava durumu ikonu"
+            tools:src="@android:drawable/star_on" />
+
+        <!-- Sıcaklık -->
+        <TextView
+            android:id="@+id/tvTahminSicaklik"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/metin_birincil"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:text="19°C" />
+
+        <!-- Hava açıklaması -->
+        <TextView
+            android:id="@+id/tvTahminAciklama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/metin_ikincil"
+            android:textSize="10sp"
+            tools:text="Az bulutlu" />
+
+        <!-- Nem -->
+        <TextView
+            android:id="@+id/tvTahminNem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/mavi_nem"
+            android:textSize="11sp"
+            tools:text="💧 %55" />
+
+        <!-- Yağış olasılığı -->
+        <TextView
+            android:id="@+id/tvTahminYagis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/mavi_yagis"
+            android:textSize="11sp"
+            tools:text="🌧 %20" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
