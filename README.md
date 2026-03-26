@@ -41,11 +41,11 @@ MVVM (Model – View – ViewModel)
 ### 1. API Anahtarı Alın
 [OpenWeatherMap](https://openweathermap.org/api) sitesine kayıt olun ve ücretsiz bir API anahtarı edinin.
 
-### 2. API Anahtarını Yapılandırın
-Proje kök dizinindeki `local.properties` dosyasına ekleyin:
+### 2. API Anahtarı Yapılandırması
+API anahtarı `app/build.gradle.kts` dosyasına doğrudan eklenmiştir. Farklı bir anahtar kullanmak istiyorsanız ilgili satırı güncelleyin:
 
-```properties
-WEATHER_API_KEY=buraya_api_anahtarinizi_yazin
+```kotlin
+buildConfigField("String", "WEATHER_API_KEY", "\"YOUR_API_KEY_HERE\"")
 ```
 
 ### 3. Projeyi Derleyin
