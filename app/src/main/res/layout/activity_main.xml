@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/arkaplan">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Arama Kutusu -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etSehirAra"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Şehir adı girin..."
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:textSize="16sp" />
+
+                <ImageButton
+                    android:id="@+id/btnAra"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Ara"
+                    android:src="@android:drawable/ic_menu_search" />
+
+                <ImageButton
+                    android:id="@+id/btnKonum"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Konumumu Kullan"
+                    android:src="@android:drawable/ic_menu_mylocation" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Yükleniyor -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+        <!-- Hata Mesajı -->
+        <TextView
+            android:id="@+id/tvHata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="16dp"
+            android:textColor="@color/hata"
+            android:textSize="16sp"
+            android:visibility="gone"
+            tools:text="Hata: Şehir bulunamadı" />
+
+        <!-- Ana İçerik -->
+        <LinearLayout
+            android:id="@+id/layoutIcerik"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <!-- Şehir & Tarih Kartı -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="@color/kart_birincil"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:id="@+id/tvSehirAdi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/beyaz"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        tools:text="İstanbul, TR" />
+
+                    <TextView
+                        android:id="@+id/tvTarih"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/beyaz_yari"
+                        android:textSize="14sp"
+                        tools:text="Perşembe, 26 Mart" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/ivHavaIkon"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:contentDescription="Hava durumu ikonu"
+                            tools:src="@android:drawable/star_on" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvSicaklik"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/beyaz"
+                                android:textSize="52sp"
+                                android:textStyle="bold"
+                                tools:text="23°C" />
+
+                            <TextView
+                                android:id="@+id/tvAciklama"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/beyaz_yari"
+                                android:textSize="16sp"
+                                tools:text="Parçalı bulutlu" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvHissedilen"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/beyaz_yari"
+                        android:textSize="14sp"
+                        tools:text="Hissedilen: 21°C" />
+
+                    <TextView
+                        android:id="@+id/tvMinMax"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/beyaz_yari"
+                        android:textSize="14sp"
+                        tools:text="↓ 18°C  ↑ 27°C" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Detay Kartları -->
+            <androidx.gridlayout.widget.GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:columnCount="2"
+                app:rowCount="4">
+
+                <!-- Nem -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    app:cardCornerRadius="12dp"
+                    app:layout_columnWeight="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="💧 Nem"
+                            android:textColor="@color/metin_ikincil"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tvNemDeger"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/metin_birincil"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            tools:text="%65" />
+
+                        <TextView
+                            android:id="@+id/tvNemAciklama"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/metin_ikincil"
+                            android:textSize="12sp"
+                            tools:text="Nemli" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Rüzgar -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    app:cardCornerRadius="12dp"
+                    app:layout_columnWeight="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="💨 Rüzgar"
+                            android:textColor="@color/metin_ikincil"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tvRuzgarDeger"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/metin_birincil"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            tools:text="18 km/s" />
+
+                        <TextView
+                            android:id="@+id/tvRuzgarYon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/metin_ikincil"
+                            android:textSize="12sp"
+                            tools:text="KKD" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Basınç -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    app:cardCornerRadius="12dp"
+                    app:layout_columnWeight="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🔵 Basınç"
+                            android:textColor="@color/metin_ikincil"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tvBasincDeger"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/metin_birincil"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            tools:text="1013 hPa" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Görüş -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    app:cardCornerRadius="12dp"
+                    app:layout_columnWeight="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="👁 Görüş"
+                            android:textColor="@color/metin_ikincil"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tvGorisDeger"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/metin_birincil"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            tools:text="10 km" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Gün Doğumu -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    app:cardCornerRadius="12dp"
+                    app:layout_columnWeight="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🌅 Gün Doğumu"
+                            android:textColor="@color/metin_ikincil"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tvGunDogumu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/metin_birincil"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            tools:text="06:28" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Gün Batımı -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    app:cardCornerRadius="12dp"
+                    app:layout_columnWeight="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🌇 Gün Batımı"
+                            android:textColor="@color/metin_ikincil"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tvGunBatimi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/metin_birincil"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            tools:text="19:45" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.gridlayout.widget.GridLayout>
+
+            <!-- 5 Günlük Tahmin Başlığı -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="5 Günlük Tahmin"
+                android:textColor="@color/metin_birincil"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Tahmin RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTahmin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingBottom="8dp"
+                tools:listitem="@layout/item_tahmin" />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

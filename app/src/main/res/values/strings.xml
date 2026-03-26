@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pro Hava Durumu</string>
+    <string name="sehir_ara_ipucu">Şehir adı girin...</string>
+    <string name="ara">Ara</string>
+    <string name="konumumu_kullan">Konumumu Kullan</string>
+    <string name="nem">Nem</string>
+    <string name="ruzgar">Rüzgar</string>
+    <string name="basinc">Basınç</string>
+    <string name="gorusMesafesi">Görüş Mesafesi</string>
+    <string name="gunDogumu">Gün Doğumu</string>
+    <string name="gunBatimi">Gün Batımı</string>
+    <string name="hissedilen">Hissedilen</string>
+    <string name="tahmin_basligi">5 Günlük Tahmin</string>
+    <string name="konum_izni_gerekli">Konum izni bu özellik için gereklidir</string>
+    <string name="sehir_bos_uyari">Lütfen bir şehir adı girin</string>
+    <string name="konum_bulunamadi">Konum alınamadı</string>
+</resources>
