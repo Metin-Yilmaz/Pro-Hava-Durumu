@@ -16,7 +16,6 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        // Sabit API anahtarı — herkese açık depolarda kullanmayın
         buildConfigField("String", "WEATHER_API_KEY", "\"f131551e75ad8e6432e7b42869dafdf0\"")
         buildConfigField("String", "BASE_URL", "\"https://api.openweathermap.org/data/2.5/\"")
     }
